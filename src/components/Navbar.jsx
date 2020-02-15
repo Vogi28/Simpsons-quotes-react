@@ -6,7 +6,7 @@ function Navbar() {
         <nav className="Navbar">
             <ul>
                 <li>
-                    <a href="https://en.wikipedia.org/wiki/The_Simpsons">The Simpsons</a>
+                    <a href="https://en.wikipedia.org/wiki/The_Simpsons">The Simpsons quotes</a>
                 </li>
             </ul>
         </nav>
