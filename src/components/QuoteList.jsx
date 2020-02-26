@@ -1,9 +1,9 @@
-import React from 'react'
+// import React from 'react';
+import React, { useState } from 'react'
+import axios from 'axios';
 import QuoteCard from './QuoteCard';
 
-// const simpsons = ['Marge', 'Homer', 'Lisa', 'Bart'];
-
-const quotes = [
+const samplesQuotes = [
     {
       quote:
         "Facts are meaningless. You could use facts to prove anything that's even remotely true.",
@@ -32,14 +32,24 @@ const quotes = [
     }
   ];
 
-function quoteList() {
+const QuoteList = () => {
+
+  const [quotes, setQuotes] = useState(samplesQuotes);
+
+  const handleQuotes = () => {
+    axios.get('https://simpsons-quotes-api.herokuapp.com/quotes?count=4').then(response => {
+      setQuotes(response.data);
+    });
+  };
+
     return (
         <div>  
         {
           quotes.map(item => (<QuoteCard image={item.image} quote={item.quote} character={item.character} />))
         }
+        <button className="refreshQuotes" onClick={handleQuotes}>Refresh Quotes</button>
       </div>
     );
-}
+};
 
-export default quoteList;
+export default QuoteList;
